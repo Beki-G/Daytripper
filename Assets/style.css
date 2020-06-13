@@ -3,6 +3,10 @@
     
     padding-bottom: 60px;
 }
+.custom-restricted {
+  height: 700px;
+  width: 1000px;
+}
 
 /* DAYTRIPPER title styling */
 .main-title{
@@ -10,11 +14,13 @@
     color: #F22797 !important;
     font-size:xx-large;
     text-transform : capitalize !important;
+    text-align: center;
 }
 
 .main-column-1{
     padding-left: 10px;
     padding-right: 10px;
+    width: 900px;
     text-align: left;
     align-content: space-around;
 }
