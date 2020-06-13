@@ -3,3 +3,6 @@
   - Joe Mengis joined the collab
   -Elissa Simons joined collab
   - Josh Blank joined collab
+
+  this is an awesome project
+  
