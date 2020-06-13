@@ -3,6 +3,10 @@
     
     padding-bottom: 60px;
 }
+.custom-restricted {
+  height: 700px;
+  width: 1000px;
+}
 
 /* DAYTRIPPER title styling */
 .main-title{
@@ -10,11 +14,13 @@
     color: #F22797 !important;
     font-size:xx-large;
     text-transform : capitalize !important;
+    text-align: center;
 }
 
 .main-column-1{
     padding-left: 10px;
     padding-right: 10px;
+    width: 900px;
     text-align: left;
     align-content: space-around;
 }
@@ -38,9 +44,11 @@
     background: #e5e5e5;
     font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
   }
+
   label {
     display: block;
   }
+
   input {
     border: 1px solid #c4c4c4;
     border-radius: 5px;
@@ -49,7 +57,46 @@
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
     width: 190px;
   }
+
 .card {
     border: seagreen;
     border-width: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+    width: 90%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    transition: 0.3s;
 }
+
+.card:hover {
+  box-shadow: 0 6px 12px 0 rgba(255, 0, 191, 0.2);
+}
+
+.restImg {
+  width: 200px;
+  height: 200px;
+  top: 30px;
+  float: left;
+  margin: 20px;
+  margin-right: 20px;
+}
+
+.textInfo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+h4 {
+  display: block !important;
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+
