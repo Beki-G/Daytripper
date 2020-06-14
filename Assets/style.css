@@ -8,6 +8,23 @@
   width: 1000px;
 }
 
+/* input fields and buttons */
+
+
+
+#zipInput {
+
+}
+
+#cityInput {
+  
+}
+
+#geoButton {
+
+}
+
+
 /* DAYTRIPPER title styling */
 .main-title{
     font-family: 'Satisfy', cursive;
@@ -27,6 +44,7 @@
 #user-input{
     align-content:flex-start;
 }
+
 /* DATE CHOOSER */
 [type="date"] {
     background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
@@ -47,6 +65,7 @@
 
   label {
     display: block;
+    width: 190px;
   }
 
   input {
@@ -99,4 +118,6 @@ h4 {
     font-weight: bold;
 }
 
-
+.btn {
+  border-radius: 1em !important;
+}
