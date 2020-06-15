@@ -7,17 +7,17 @@ var settings = {
 
 let href = ""
 $.ajax(settings).done(function (response) {
-    console.log(response);
-    console.log(response._embedded.events[0].outlets[0].url)
+    //console.log(response);
+   //console.log(response._embedded.events[0].outlets[0].url)
     $("#testLink").attr("href", response._embedded.events[0].outlets[0].url);
     renderTicketMasterResponse(response);
 });
 
 
 $("#eventBtn").click(event=>{
-    console.log("I'm listening!")
+    //console.log("I'm listening!")
     location.href = $("#testLink").attr("href");
-    console.log( $("#testLink").attr("href"))
+    //console.log( $("#testLink").attr("href"))
 })
 
 function renderTicketMasterResponse(response){
@@ -50,7 +50,7 @@ function renderTicketMasterResponse(response){
 
     // console.log(genre);
     // console.log(venue);
-    console.log(eventDateStr);
+    //console.log(eventDateStr);
 
     $("#genre").text("Genre: "+genre);
     $("#venue").text("Venue: "+venue);
