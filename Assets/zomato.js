@@ -1,22 +1,52 @@
-var settings = {
-    "url": "https://developers.zomato.com/api/v2.1/geocode?lat=40.742051&lon=-74.004821",
-    "method": "GET",
-    "timeout": 0,
-    "headers": {
-      "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
-    },
-};
-  
-$.ajax(settings).then(function (response) {
+$("#geoButton").click(function(){
+    event.preventDefault();
+    console.log("I heard the button")
+    useCurrentCoordinates();
+})
+
+function useCurrentCoordinates(){
+  console.log("I'm in useCurrentCoordinates")
+  function success(position){
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    let queryURL = "https://developers.zomato.com/api/v2.1/geocode?lat="+latitude+"&lon="+longitude;
+
+    let settings = {
+      "url": queryURL,
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
+      }
+    }
+
+    useCoordinatesRestaurantAPI(settings);
+  }
+
+  function error(){
+    alert("Unable to retrieve your location")
+  }
+
+  if(!navigator.geolocation){
+    alert("Cannot use location. Please use City or Zip")
+  }else{
+    navigator.geolocation.getCurrentPosition(success,error)
+  }
+}
+
+function useCoordinatesRestaurantAPI(settings){
+  $.ajax(settings).then(function (response) {
 
     let restuarants = response.nearby_restaurants
-
+  
     restuarants.forEach(restaurant => {
       let restaurantArr = getRestaurantData(restaurant);
       renderRestCard(restaurantArr);
     });
-
-});             
+  
+  });    
+}       
 
 function formatStr(str){
   let placeHolder = str;
