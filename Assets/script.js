@@ -6,11 +6,19 @@ var settings = {
 };
 
 let href = ""
-$.ajax(settings).done(function (response) {
+$.ajax(settings).then(function (response) {
     //console.log(response);
    //console.log(response._embedded.events[0].outlets[0].url)
-    $("#testLink").attr("href", response._embedded.events[0].outlets[0].url);
-    renderTicketMasterResponse(response);
+    // $("#testLink").attr("href", response._embedded.events[0].outlets[0].url);
+    //console.log(response);
+
+    let eventsArr = response._embedded.events;
+                       
+    eventsArr.forEach(event => {
+        let eventInfoArr = getEventInfo(event);
+        renderEventCard(eventInfoArr);
+    });
+
 });
 
 
@@ -44,14 +52,6 @@ function renderTicketMasterResponse(response){
     let eventImg = event.images[0].url;
 
 
-
-
-    //console.log(eventDate)
-
-    // console.log(genre);
-    // console.log(venue);
-    //console.log(eventDateStr);
-
     $("#genre").text("Genre: "+genre);
     $("#venue").text("Venue: "+venue);
 
@@ -61,4 +61,67 @@ function renderTicketMasterResponse(response){
     $("#date").text("Date: "+eventDateStr);
     $("#eventName").text(eventName);
     $(".events").children("img").attr("src", eventImg)
+}
+
+function getEventInfo(event){
+    console.log(event)
+    let eventName = event.name;
+    let eventGenre =event.classifications.segment+" - "+ event.classifications[0].subGenre.name;
+    let eventVenue = event._embedded.venues[0].name;
+    
+    let eventDate = event.dates.start.dateTime;
+    let d = new Date(eventDate);
+    let eventDay = d.getDate();
+    let eventMonth = d.getMonth()+1;
+    let eventYear = d.getFullYear();
+
+    let eventDateStr = eventMonth+"/"+eventDay+"/"+eventYear;
+
+    let eventPrice;
+
+    if(event.dates.status.code==="offsale"){
+        eventPrice = "TBD"
+    }else{
+        eventPrice = event.dates.status.code
+    }
+
+    let eventImg= event.images[3].url
+
+
+    let eventInfoArr = [{name: eventName}, {genre:eventGenre}, {venue: eventVenue}, {date:eventDateStr}, {price:eventPrice}, {imgSrc: eventImg}]
+
+    console.log(eventInfoArr)
+    return eventInfoArr;
+    
+}
+
+function renderEventCard(eventInfoArr){
+
+    let eventCardEl = $("<div></div>").attr("class", "card events");
+
+    let eventImgEl = $("<img>").attr("class","restImg")
+    eventImgEl.attr("src", eventInfoArr[5].imgSrc);
+
+    let h2El = $("<h2></h2>").attr("id", "eventName");
+    h2El.text(eventInfoArr[0].name)
+
+    let h4El1 = $("<h4></h4>").attr("id","genre");
+    h4El1.text(eventInfoArr[1].genre);
+
+    let h4El2 = $("<h4></h4>").attr("id", "venue");
+    h4El2.text(eventInfoArr[2].venue);
+
+    let h4El3 = $("<h4></h4>").attr("id", "date");
+    h4El3.text(eventInfoArr[3].date);
+
+    let h4El4 = $("<h4></h4>").attr("id", "price");
+    h4El4.text(eventInfoArr[4].price)
+
+    eventCardEl.append(eventImgEl);
+    eventCardEl.append(h2El);
+    eventCardEl.append(h4El1);
+    eventCardEl.append(h4El2);
+    eventCardEl.append(h4El3);
+    eventCardEl.append(h4El4);
+
 }
