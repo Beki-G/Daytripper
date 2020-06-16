@@ -8,24 +8,7 @@
   width: 1000px;
 }
 
-/* input fields and buttons */
-
-
-
-#zipInput {
-
-}
-
-#cityInput {
-  
-}
-
-#geoButton {
-
-}
-
-
-/* DAYTRIPPER header styling */
+/* DAYTRIPPER title styling */
 .main-title{
     font-family: 'Satisfy', cursive;
     color: #F22797 !important;
@@ -41,6 +24,23 @@
   text-transform : capitalize !important;
   
 }
+
+.sidebar-title{
+  font-weight: bolder;
+  font-size:medium;
+}
+
+.sidebar-box{
+  
+  margin-bottom: 20px !important;
+  
+}
+
+.sidebar-seperator{
+  box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
+  padding-bottom: 10px;
+}
+
 
 .main-column-1{
     padding-left: 10px;
