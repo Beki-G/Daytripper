@@ -1,12 +1,13 @@
 
 function ticketMasterCoordinateAPI(settings){
     $.ajax(settings).then(function(response){
-    let eventsArr = response._embedded.events;
-                       
-    eventsArr.forEach(event => {
-        let eventInfoArr = getEventInfo(event);
-        renderEventCard(eventInfoArr);
-     });
+        $(".container").children(".events").remove()
+        let eventsArr = response._embedded.events;
+                        
+        eventsArr.forEach(event => {
+            let eventInfoArr = getEventInfo(event);
+            renderEventCard(eventInfoArr);
+        });
     })
 }
 

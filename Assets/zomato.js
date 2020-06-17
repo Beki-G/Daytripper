@@ -4,6 +4,134 @@ $("#geoButton").click(function(){
     useCurrentCoordinates();
 })
 
+$("#submit").click(function(){
+  event.preventDefault();
+
+  let city = $("#cityInput").val();
+  let date = $("#dateOfTrip").val();
+  
+  userInputHandler(city, date);
+})
+
+$(".close").click(function(){
+  event.preventDefault();
+  $("#myModal").attr("style", "display: none;");
+})
+
+
+function userInputHandler(city, date){
+  //use zomato api to get list of possible city matches
+  console.log("in Handler "+ city+" "+date);
+
+  var settings = {
+    "url": "https://developers.zomato.com/api/v2.1/cities?q="+city,
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+      "user-key": "ee81083d2e8f964d3fc648ac92d54cae"
+    }
+  }
+
+  $.ajax(settings).then(function (response) {
+    if (response.status === "success" && response.location_suggestions.length >=1){
+      verifyUserCity(response.location_suggestions, date, city);
+    }else {
+      alert("Cannot find your city. Please try to add the state abbrevatation.")
+    }
+  });
+
+}
+
+function verifyUserCity(response, date, userInput){
+  $("#cities").empty();
+  
+  console.log(response)
+
+  if(response.length>1){
+    for(cityObj in response){
+      let cityButton = $("<button></button>").attr("class", "btn pure-button pure-button-primary cityOptions");
+      cityButton.text(response[cityObj].name);
+      cityButton.attr("id", response[cityObj].id);
+      //console.log(cityObj)
+      cityButton.attr("data-state", response[cityObj].state_code)
+      
+      $("#cities").append(cityButton); 
+      $("#myModal").attr("style", "display: block;");
+    }
+  }else{
+    let cityInfoObj = {name:userInput, zomatoId: response[0].id, stateCode: response[0].state_code}
+    console.log(cityInfoObj)
+    useCitiesAPI(cityInfoObj, date)
+  }
+
+  $(".cityOptions").click(event=>{
+    event.preventDefault();
+    console.log("Listening");
+    let cityId = event.target.id;
+    let cityState = event.target.getAttribute("data-state")
+    let cityInfoObj = {name:userInput, zomatoId: cityId, state: cityState};
+
+    console.log(cityInfoObj);
+    useCitiesAPI(cityInfoObj, date);
+    $("#myModal").attr("style", "display: none;");
+
+  })
+
+ 
+}
+
+function useCitiesAPI(cityObj, date){
+//call zomato's api
+  var zomatoSettings = {
+    "url": "https://developers.zomato.com/api/v2.1/location_details?entity_id="+cityObj.zomatoId+"&entity_type=city",
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+      "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
+    },
+  };
+
+  $.ajax(zomatoSettings).done(function (response) {
+    $(".container").children(".restaurant").remove()
+    console.log("Zomato response:")
+    console.log(response);
+    let restaurants = response.best_rated_restaurant;
+
+    restaurants.forEach(restaurant =>{
+      let restaurantArr = getRestaurantData(restaurant);
+      renderRestCard(restaurantArr);
+    })
+  });
+
+//call ticketmasterAPI
+
+  var ticketMasterSetting= {
+    "url": "https://app.ticketmaster.com/discovery/v2/events.json?city="+cityObj.name+"&stateCode="+cityObj.state+"&apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM",
+    "method": "GET",
+    "timeout": 0,
+
+  }
+
+  $.ajax(ticketMasterSetting).done(function (response) {
+    $(".container").children(".events").remove()
+    console.log("TickMasterResponse:");
+    console.log(response)
+
+    if(response._embedded){
+      let eventsArr = response._embedded.events;
+                       
+      eventsArr.forEach(event => {
+        let eventInfoArr = getEventInfo(event);
+        renderEventCard(eventInfoArr);
+      })
+
+    }else{
+      console.log("no events")
+    }
+  });
+
+}
+
 function useCurrentCoordinates(){
   console.log("I'm in useCurrentCoordinates")
   function success(position){
@@ -45,9 +173,9 @@ function useCurrentCoordinates(){
 
 function useCoordinatesRestaurantAPI(settings){
   $.ajax(settings).then(function (response) {
-
+    $(".container").children(".restaurant").remove()
     let restuarants = response.nearby_restaurants
-  
+    
     restuarants.forEach(restaurant => {
       let restaurantArr = getRestaurantData(restaurant);
       renderRestCard(restaurantArr);
