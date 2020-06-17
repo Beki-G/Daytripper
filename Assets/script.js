@@ -1,32 +1,14 @@
-//ticketmaster ajax
-var settings = {
-    "url": "https://app.ticketmaster.com/discovery/v2/events.json?city=[medford]&stateCode=OR&apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM",
-    "method": "GET",
-    "timeout": 0    
-};
 
-let href = ""
-$.ajax(settings).then(function (response) {
-    //console.log(response);
-   //console.log(response._embedded.events[0].outlets[0].url)
-    // $("#testLink").attr("href", response._embedded.events[0].outlets[0].url);
-    //console.log(response);
-
+function ticketMasterCoordinateAPI(settings){
+    $.ajax(settings).then(function(response){
     let eventsArr = response._embedded.events;
                        
     eventsArr.forEach(event => {
         let eventInfoArr = getEventInfo(event);
         renderEventCard(eventInfoArr);
-    });
-
-});
-
-
-$("#eventBtn").click(event=>{
-    //console.log("I'm listening!")
-    location.href = $("#testLink").attr("href");
-    //console.log( $("#testLink").attr("href"))
-})
+     });
+    })
+}
 
 function renderTicketMasterResponse(response){
     let event = response._embedded.events[0]
@@ -66,7 +48,7 @@ function renderTicketMasterResponse(response){
 function getEventInfo(event){
     console.log(event)
     let eventName = event.name;
-    let eventGenre =event.classifications.segment+" - "+ event.classifications[0].subGenre.name;
+    let eventGenre =event.classifications[0].genre.name+" - "+ event.classifications[0].subGenre.name;
     let eventVenue = event._embedded.venues[0].name;
     
     let eventDate = event.dates.start.dateTime;
@@ -80,42 +62,46 @@ function getEventInfo(event){
     let eventPrice;
 
     if(event.dates.status.code==="offsale"){
-        eventPrice = "TBD"
+        eventPrice = "Tickets are not available"
     }else{
         eventPrice = event.dates.status.code
     }
 
     let eventImg= event.images[3].url
 
+    let eventLink = event.url
 
-    let eventInfoArr = [{name: eventName}, {genre:eventGenre}, {venue: eventVenue}, {date:eventDateStr}, {price:eventPrice}, {imgSrc: eventImg}]
+    let eventInfoObj = {name: eventName, genre:eventGenre, venue: eventVenue, date:eventDateStr, price:eventPrice, imgSrc: eventImg, infoUrl: eventLink};
 
-    console.log(eventInfoArr)
-    return eventInfoArr;
+    console.log(eventInfoObj)
+    return eventInfoObj;
     
 }
 
-function renderEventCard(eventInfoArr){
+function renderEventCard(eventInfoObj){
 
     let eventCardEl = $("<div></div>").attr("class", "card events");
 
     let eventImgEl = $("<img>").attr("class","restImg")
-    eventImgEl.attr("src", eventInfoArr[5].imgSrc);
+    eventImgEl.attr("src", eventInfoObj.imgSrc);
 
-    let h2El = $("<h2></h2>").attr("id", "eventName");
-    h2El.text(eventInfoArr[0].name)
+    let h2El = $("<h2></h2>").text(eventInfoObj.name);
 
-    let h4El1 = $("<h4></h4>").attr("id","genre");
-    h4El1.text(eventInfoArr[1].genre);
+    let h4El1 = $("<h4></h4>").text(eventInfoObj.genre);
 
-    let h4El2 = $("<h4></h4>").attr("id", "venue");
-    h4El2.text(eventInfoArr[2].venue);
+    let h4El2 = $("<h4></h4>").text(eventInfoObj.venue);
 
-    let h4El3 = $("<h4></h4>").attr("id", "date");
-    h4El3.text(eventInfoArr[3].date);
+    let h4El3 = $("<h4></h4>").text(eventInfoObj.date);
 
-    let h4El4 = $("<h4></h4>").attr("id", "price");
-    h4El4.text(eventInfoArr[4].price)
+    let h4El4 = $("<h4></h4>").text(eventInfoObj.price)
+
+    let buttonEl = $("<button></button>").attr("class", "btn pure-button pure-button-primary cardContent");
+    let aEl = $("<a></a>").attr("href", eventInfoObj.infoUrl);
+    aEl.text("More Info");
+    aEl.css("text-decoration", "none");
+    aEl.css("color", "white");
+
+    buttonEl.append(aEl);
 
     eventCardEl.append(eventImgEl);
     eventCardEl.append(h2El);
@@ -123,5 +109,8 @@ function renderEventCard(eventInfoArr){
     eventCardEl.append(h4El2);
     eventCardEl.append(h4El3);
     eventCardEl.append(h4El4);
+    eventCardEl.append(buttonEl);
+
+    $(".container").append(eventCardEl)
 
 }

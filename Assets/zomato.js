@@ -21,7 +21,15 @@ function useCurrentCoordinates(){
       }
     }
 
+    let ticketMasterSettings={
+      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong="+latitude+","+longitude,
+      "method": "GET",
+      "timeout": 0      
+    }
+
     useCoordinatesRestaurantAPI(settings);
+
+    ticketMasterCoordinateAPI(ticketMasterSettings);
   }
 
   function error(){
