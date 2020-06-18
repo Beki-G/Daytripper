@@ -23,47 +23,53 @@
             </div>
             
         </div>
-<!-- Column 1 - Sidebar -->
-            <div id="myModal" class="modal">
+        <!-- Column 1 - Sidebar -->
+        <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Please select the correct city</p>
-              <div id= "cities"></div>
+                <span class="close">&times;</span>
+                <p>Please select the correct city</p>
+                <div id="cities"></div>
             </div>
         </div>
 
         <div class="pure-g">
             <div class="pure-u-1-1 pure-u-md-1-5 l-box column-1">
-                <div class="col-title sidebar-seperator">Filters</div>
+                <div class="col-title sidebar-seperator">Filters<span id="clearSearch" class="clear">Clear Search</span></div>
                 <form class="pure-form pure-form-stacked" id="user-input">
                     <fieldset>
                         <div class="pure-control-group sidebar-box">
-                            <label class= "sidebar-title" for="stacked-name">City</label>
-                            <input class="input pure-input-rounded" id="cityInput" type="text" placeholder="City Name" />
+                            <label class="sidebar-title" for="stacked-name">City</label>
+                            <input class="input pure-input-rounded" id="cityInput" type="text"
+                                placeholder="City Name" />
                         </div>
                         <div class="pure-control-group sidebar-box">
-                            <label class= "sidebar-title" for="date">Date</label>
+                            <label class="sidebar-title" for="date">Date</label>
                             <input class="input pure-input-rounded" type="date" name="dateofbirth" id="dateOfTrip">
                         </div>
                         <div class="pure-controls sidebar-box sidebar-seperator">
                             <label for="stacked-cb" class="pure-checkbox">
-                            <button id="submit" type="submit" class="btn pure-button pure-button-primary">Submit</button>
+                                <button id="submit" type="submit"
+                                    class="btn pure-button pure-button-primary">Submit</button>
                         </div>
-                        
+
                         <div class="pure-control-group sidebar-box">
-                            <label class= "sidebar-title sidebar-box" for="date">Use current Location</label>
+                            <label class="sidebar-title sidebar-box" for="date">Use My Location</label>
                             <button id="geoButton" class="btn pure-button pure-button-primary">Use My Location</button>
                             <form id="">
                         </div>
                     </fieldset>
                 </form>
             </div>
+<<<<<<< HEAD
 <!-- Column 2 - Results -->
+=======
+            <!-- Column 2 - Results -->
+>>>>>>> master
             <div class="pure-u-1-1 pure-u-md-12-24 l-box column-2">
                 <div class="col-title sidebar-seperator">Results</div>
                 <div class="container center pure-menu pure-menu-scrollable custom-restricted">
-                    
+
                     <div class="card restaurant">
                         <img class="restImg" src="./Assets/images/220px-Probosciger_aterrimus-20030511.jpg"
                             alt="Cockatoo">
@@ -93,32 +99,34 @@
                         <h4 id="genre">Genre:</h4>
                         <h4 id="venue">Venue:</h4>
                         <h4 id="date">Date:</h4>
-                        <h4 id="price">Ticket Price:</h4>
-                        <p class="textInfo" id="eventDescription">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        <i class="fas fa-dollar-sign"></i>
+                        <p class="textInfo" id="eventDescription">Description Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit,
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                             irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
                             anim id est laborum.
                         </p>
-                        <button class="btn pure-button pure-button-primary" id="eventBtn"><a id ="testLink"></a>Purchase Tickets!</button>
+                        <button class="btn pure-button pure-button-primary" id="eventBtn"><a id="testLink"></a>Purchase
+                            Tickets!</button>
                     </div>
                 </div>
             </div>
-<!-- Column 3 - Empty -->
+            <!-- Column 3 - Empty -->
             <!-- <div class="pure-u-1-1 pure-u-md-1-2 l-box">
                 <div class="">
                 
                 </div>
             </div> -->
-            
+
         </div>
 
 
         <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script src="./Assets/script.js"></script>
-        <script src = "./Assets/zomato.js"></script>
+        <script src="./Assets/zomato.js"></script>
 </body>
 
 </html>
