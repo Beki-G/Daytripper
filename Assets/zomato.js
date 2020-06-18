@@ -115,15 +115,16 @@ function useCitiesAPI(cityObj, date){
   });
 
 //call ticketmasterAPI
-
+  let d = new Date(date);
+  console.log(date);
   var ticketMasterSetting= {
-    "url": "https://app.ticketmaster.com/discovery/v2/events.json?city="+cityObj.name+"&stateCode="+cityObj.state+"&apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM",
+    "url": "https://app.ticketmaster.com/discovery/v2/events.json?city="+cityObj.name+"&stateCode="+cityObj.state+"&localStartDateTime"+date+"T00:01:00&apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM",
     "method": "GET",
     "timeout": 0,
 
   }
 
-  $.ajax(ticketMasterSetting).done(function (response) {
+  $.ajax(ticketMasterSetting).then(function (response) {
     $(".container").children(".events").remove()
     console.log("TickMasterResponse:");
     console.log(response)
@@ -253,12 +254,12 @@ function renderRestCard(restaurant){
   let restPEl = $("<p></p>").attr("class", "textInfo");
   restPEl.attr("id", "description-"+restaurantName);
 
-  let restButtonEl = $("<button></button>").attr("class", "cardContent");
+  let restButtonEl = $("<button></button>").attr("class", "btn pure-button pure-button-primary cardContent");
   restButtonEl.attr("id", "restBtn-"+restaurantName);
   
   let aEl = $("<a></a>").attr("href", restaurant[6].menu);
   aEl.text("More Info");
-  aEl.attr("style", "color: black; text-decoration: none;")
+  aEl.attr("style", "color: white; text-decoration: none;")
 
   restButtonEl.append(aEl);
 

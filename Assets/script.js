@@ -11,40 +11,40 @@ function ticketMasterCoordinateAPI(settings){
     })
 }
 
-function renderTicketMasterResponse(response){
-    let event = response._embedded.events[0]
+// function renderTicketMasterResponse(response){
+//     let event = response._embedded.events[0]
 
-    let genre = event.classifications[0].genre.name;
+//     let genre = event.classifications[0].genre.name;
 
-    let venue = event._embedded.venues[0].name;
+//     let venue = event._embedded.venues[0].name;
 
-    let venueAddress = event._embedded.venues[0].address.line1+" "+event._embedded.venues[0].city.name+" "+event._embedded.venues[0].state.name
+//     let venueAddress = event._embedded.venues[0].address.line1+" "+event._embedded.venues[0].city.name+" "+event._embedded.venues[0].state.name
 
-    let eventDate = event.dates.start.dateTime;
+//     let eventDate = event.dates.start.dateTime;
 
-    let eventName = event.name;
+//     let eventName = event.name;
 
-    let d = new Date(eventDate);
+//     let d = new Date(eventDate);
 
-    let eventDay = d.getDate();
-    let eventMonth = d.getMonth()+1;
-    let eventYear = d.getFullYear();
+//     let eventDay = d.getDate();
+//     let eventMonth = d.getMonth()+1;
+//     let eventYear = d.getFullYear();
+//     console.log(d);
+//     let eventDateStr = eventMonth+"/"+eventDay+"/"+eventYear;
 
-    let eventDateStr = eventMonth+"/"+eventDay+"/"+eventYear;
-
-    let eventImg = event.images[0].url;
+//     let eventImg = event.images[0].url;
 
 
-    $("#genre").text("Genre: "+genre);
-    $("#venue").text("Venue: "+venue);
+//     $("#genre").text("Genre: "+genre);
+//     $("#venue").text("Venue: "+venue);
 
-    let pEl = $("<p></p>").text(venueAddress);
+//     let pEl = $("<p></p>").text(venueAddress);
 
-    $("#venue").append(pEl);
-    $("#date").text("Date: "+eventDateStr);
-    $("#eventName").text(eventName);
-    $(".events").children("img").attr("src", eventImg)
-}
+//     $("#venue").append(pEl);
+//     $("#date").text("Date: "+eventDateStr);
+//     $("#eventName").text(eventName);
+//     $(".events").children("img").attr("src", eventImg)
+// }
 
 function getEventInfo(event){
     console.log(event)
@@ -57,8 +57,8 @@ function getEventInfo(event){
     let eventDay = d.getDate();
     let eventMonth = d.getMonth()+1;
     let eventYear = d.getFullYear();
-
-    let eventDateStr = eventMonth+"/"+eventDay+"/"+eventYear;
+    console.log(d);
+    let eventDateStr = eventYear+"/"+eventMonth+"/"+eventDay;
 
     let eventPrice;
 
