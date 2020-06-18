@@ -2,6 +2,17 @@ $("#geoButton").click(function(){
     event.preventDefault();
     console.log("I heard the button")
     useCurrentCoordinates();
+    $("#cityInput").attr("disabled", " ");
+    $("#dateOfTrip").attr("disabled", " ");
+})
+
+$("#clearSearch").click(function(){
+  event.preventDefault();
+  $( "#cityInput" ).removeAttr("disabled");
+  $( "#dateOfTrip" ).removeAttr("disabled");
+  $('#cityInput').val('');
+  $('#dateOfTrip').val('');
+  $(".container").empty();
 })
 
 $("#submit").click(function(){

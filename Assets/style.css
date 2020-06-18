@@ -11,17 +11,18 @@ body {
 }
 
 /* main header styling */
-.header{
-    
-    padding-bottom: 60px;
+.header {
+
+  padding-bottom: 60px;
 }
+
 .custom-restricted {
   height: 700px;
   width: auto;
 }
 
 /* DAYTRIPPER title styling */
-.column-1{
+.column-1 {
   /* margin-right: 30px; */
   padding-left: 40px;
   /* padding-right: 10px;
@@ -32,6 +33,7 @@ body {
 .main-title{
     font-family: 'Satisfy', cursive;
     color: #F22797 !important;
+    text-shadow: 1px 1px #04D9C4;
     font-size: xx-large;
     text-transform : capitalize !important;
     text-align: center;
@@ -42,37 +44,37 @@ body {
   color: black !important;
   text-shadow: 1px 1px #04D9C4;
   font-size: x-large;
-  text-transform : capitalize !important;
+  text-transform: capitalize !important;
   text-align: left;
   line-height: 50px;
 }
 
 /* Sidebar Formatting and Styling */
-.menu-title{
+.menu-title {
   font-family: 'Satisfy', cursive;
   color: black !important;
   font-size: medium;
-  text-transform : capitalize !important;
-  
+  text-transform: capitalize !important;
+
 }
 
-#user-input{
-  align-content:flex-start;
+#user-input {
+  align-content: flex-start;
 }
 
-.sidebar-title{
+.sidebar-title {
   font-weight: bolder;
-  font-size:medium;
+  font-size: medium;
   color: black !important;
   text-shadow: 1px 1px #F2CB05;
 
 }
 
-.sidebar-box{
+.sidebar-box {
   margin-bottom: 20px !important;
 }
 
-.sidebar-seperator{
+.sidebar-seperator {
   box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
   padding-bottom: 10px;
 }
@@ -87,48 +89,52 @@ input {
   border-radius: 5px;
   background-color: #fff;
   padding: 3px 5px;
-  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
   width: 190px;
 }
 
 
 /* DATE CHOOSER */
 [type="date"] {
-    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
-  }
-  [type="date"]::-webkit-inner-spin-button {
-    display: none;
-  }
-  [type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-  }
-  
+  background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
 /* Column 2 - Main Results For matting and Styling */
 
-.container{
+.container {
   margin-left: 30px;
   margin-right: 30px;
 
 }
+
 .column-2 {
   margin-left: 40px;
- 
+
 }
- 
+
 /* Card Styling and Formatting */
 .card {
-    
-    margin-bottom: 40px;
-    /* margin-left: 30px; */
-    /* margin-right: 5%; */
-    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
-    width: 95%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-right: 2%;
-    transition: 0.3s;
-    
+
+  margin-bottom: 40px;
+  /* margin-left: 30px; */
+  /* margin-right: 5%; */
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+  width: 95%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 2%;
+  transition: 0.3s;
+
 }
+
 .restaurant {
   background-color: #f2cb055b;
 }
@@ -157,39 +163,52 @@ input {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 
 h4 {
   display: block !important;
-    margin-block-start: .5em;
-    margin-block-end: .5em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
+.clear {
+  font-size: small;
+  float: right;
+}
 
-
-.btn {
-  border-radius: 1em !important;
+.clear:hover {
+  cursor: pointer;
 }
 
 
 /* ======================Modal============================= */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 /* Modal Content */

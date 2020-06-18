@@ -21,7 +21,8 @@ h4,
 h5,
 h6,
 label {
-    color: rgb(55, 12, 12);
+    color:black;
+    
 }
 
 .pure-img-responsive {
@@ -71,7 +72,7 @@ label {
  * I want my pure-button elements to look a little different
  */
 .pure-button {
-    background-color: rgb(55, 12, 12);
+    background-color: black;
     color: white;
     padding: 0.5em 2em;
     border-radius: 5px;
@@ -96,7 +97,7 @@ a.pure-button-primary {
     box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
 }
 .home-menu {
-    background: #2d3e50;
+    background: #e5e5e5;
 }
 .pure-menu.pure-menu-fixed {
     /* Fixed menus normally have a border at the bottom. */
@@ -106,17 +107,20 @@ a.pure-button-primary {
 }
 
 .home-menu .pure-menu-heading {
-    color: white;
+    font-family: 'Satisfy', cursive;
+    text-transform : capitalize !important;
+    color: #F22797;
+    text-shadow: 1px 1px #04D9C4;
     font-weight: 400;
-    font-size: 120%;
+    font-size: 200%;
 }
 
 .home-menu .pure-menu-selected a {
-    color: white;
+    color:#F22797;
 }
 
 .home-menu a {
-    color: rgb(55, 12, 12);
+    color: black;
 }
 .home-menu li a:hover,
 .home-menu li a:focus {
@@ -132,7 +136,7 @@ a.pure-button-primary {
  */
 
 .splash-container {
-    background: rgb(55, 12, 12);
+    background: black;
     z-index: 1;
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
@@ -145,6 +149,7 @@ a.pure-button-primary {
 
 .splash {
     /* absolute center .splash within .splash-container */
+    color: white;
     width: 80%;
     height: 50%;
     margin: auto;
@@ -156,9 +161,11 @@ a.pure-button-primary {
 
 /* This is the main heading that appears on the blue section */
 .splash-head {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
-    color: rgb(249, 204, 0);
+    color: #04D9C4;
+    text-shadow: 1px 1px #F22797;
     border: 3px solid white;
     padding: 1em 1.6em;
     font-weight: 100;
@@ -171,6 +178,7 @@ a.pure-button-primary {
     color: white;
     letter-spacing: 0.05em;
     opacity: 0.8;
+    
 }
 
 /*
@@ -186,6 +194,11 @@ a.pure-button-primary {
     z-index: 2;
     background: white;
 
+}
+
+.small-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-small;
 }
 
 /* We want to give the content area some more padding */
@@ -207,8 +220,17 @@ a.pure-button-primary {
 }
 
 /* This is the class used for the content sub-headers (<h3>) */
-.content-subhead {
-    color: rgb(55, 12, 12);
+.content-subhead-rest{
+    color: black;
+    text-shadow: 1.5px 1.5px #f2cb055b;
+}
+    .content-subhead i {
+        margin-right: 7px;
+    }
+
+.content-subhead-events {
+    color: black;
+    text-shadow: 1.5px 1.5px #04d9c452;
 }
     .content-subhead i {
         margin-right: 7px;
@@ -216,13 +238,13 @@ a.pure-button-primary {
 
 /* This is the class used for the dark-background areas. */
 .ribbon {
-    background: rgb(55, 12, 12);
+    background: #04D9C4;
     color: #aaa;
 }
 
 /* This is the class used for the footer */
 .footer {
-    background: rgb(55, 12, 12);
+    background: #04D9C4;
     color: rgb(249, 204, 0);
     position: fixed;
     bottom: 0;
