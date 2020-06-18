@@ -113,5 +113,5 @@ function renderEventCard(eventInfoObj){
     eventCardEl.append(buttonEl);
 
     $(".container").append(eventCardEl)
-
+  
 }
