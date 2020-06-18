@@ -30,12 +30,13 @@ body {
   align-content: space-around; */
 }
 
-.main-title {
-  font-family: 'Satisfy', cursive;
-  color: #F22797 !important;
-  font-size: xx-large;
-  text-transform: capitalize !important;
-  text-align: center;
+.main-title{
+    font-family: 'Satisfy', cursive;
+    color: #F22797 !important;
+    text-shadow: 1px 1px #04D9C4;
+    font-size: xx-large;
+    text-transform : capitalize !important;
+    text-align: center;
 }
 
 .col-title {
