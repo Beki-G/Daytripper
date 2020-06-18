@@ -1,3 +1,7 @@
+var today = new Date().toISOString().split('T')[0];
+console.log(today)
+$("#dateOfTrip").attr("min", today)
+
 $("#geoButton").click(function(){
     event.preventDefault();
     console.log("I heard the button")
