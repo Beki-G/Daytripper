@@ -200,14 +200,6 @@ function useCoordinatesRestaurantAPI(settings){
   });    
 }       
 
-function formatStr(str){
-  let placeHolder = str;
-  placeHolder = placeHolder.split(' ').join('_')
-  placeHolder = placeHolder.toLowerCase();
-
-  return placeHolder
-};
-
 function getRestaurantData(restaurant){
   let rest = restaurant.restaurant;
   let restName = rest.name;
@@ -230,7 +222,8 @@ function getRestaurantData(restaurant){
 }
 
 function renderRestCard(restaurant){
-  let restaurantName = formatStr(restaurant[0].name);
+  let restaurantName = _.snakeCase(restaurant[0].name);
+  console.log("RestaurantName is: "+ restaurantName)
 
   let restCard = $("<div></div>").attr("class", "card restaurant")
   restCard.attr("id", restaurantName);
