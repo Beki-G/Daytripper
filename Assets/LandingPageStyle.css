@@ -56,7 +56,13 @@ label {
     text-align: center;
 }
 
+#menu-spacing-food {
+    margin-right: 20px;
+}
 
+#menu-spacing-events {
+    margin-left: 20px;
+}
 
 /*
  * -- PURE FORM STYLES --
@@ -174,7 +180,7 @@ a.pure-button-primary {
     font-size: 20px;
     font-weight: bold;
     color:#04D9C4;
-    text-shadow: 1px 1px #F22797;
+    text-shadow: 1px 1px white;
     border: 3px solid #e5e5e5;
     padding: 1em 1.6em;
     font-weight: 100;
@@ -239,6 +245,7 @@ a.pure-button-primary {
 
 /* This is the class used for the content sub-headers (<h3>) */
 .content-subhead-rest{
+    
     color: black;
     text-shadow: 1.5px 1.5px #f2cb055b;
 }
@@ -251,7 +258,7 @@ a.pure-button-primary {
     text-shadow: 1.5px 1.5px #04d9c452;
 }
 #content-subhead-body {
-    font-size: xx-small;
+    font-size: small;
 }
 .content-subhead i {
     margin-right: 7px;
