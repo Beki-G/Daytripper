@@ -2,7 +2,7 @@
 
 body {
   padding: 4em;
-  background: #e5e5e5;
+  background: white;
   font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
 
@@ -12,7 +12,6 @@ body {
 
 /* main header styling */
 .header {
-
   padding-bottom: 60px;
 }
 
@@ -30,19 +29,23 @@ body {
   align-content: space-around; */
 }
 
-.main-title{
-    font-family: 'Satisfy', cursive;
-    color: #F22797 !important;
-    text-shadow: 1px 1px #04D9C4;
-    font-size: xx-large;
-    text-transform : capitalize !important;
-    text-align: center;
+.main-title {
+  font-family: 'Satisfy', cursive;
+  color: #F22797 !important;
+  text-shadow: 1px 1px #04D9C4;
+  font-size: 50px;
+  text-transform: capitalize !important;
+  text-align: center;
 }
 
 .col-title {
   font-family: 'Satisfy', ;
   color: black !important;
-  text-shadow: 1px 1px #04D9C4;
+  text-shadow:
+    1px 1px 2px #04D9C4,
+    1px -1px 2px #04D9C4,
+    -1px 1px 2px #04D9C4,
+    -1px -1px 2px #04D9C4;
   font-size: x-large;
   text-transform: capitalize !important;
   text-align: left;
@@ -65,9 +68,12 @@ body {
 .sidebar-title {
   font-weight: bolder;
   font-size: medium;
-  color: black !important;
-  text-shadow: 1px 1px #F2CB05;
-
+  color: white !important;
+  text-shadow:
+    1px 1px 2px #F22797,
+    1px -1px 2px #F22797,
+    -1px 1px 2px #F22797,
+    -1px -1px 2px #F22797;
 }
 
 .sidebar-box {
@@ -123,7 +129,7 @@ input {
 /* Card Styling and Formatting */
 .card {
 
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   /* margin-left: 30px; */
   /* margin-right: 5%; */
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
@@ -131,16 +137,17 @@ input {
   padding-top: 2%;
   padding-bottom: 2%;
   padding-right: 2%;
+  padding-left: 2%;
   transition: 0.3s;
 
 }
 
 .restaurant {
-  background-color: #f2cb055b;
+  background-color: #fdd4055b;
 }
 
 .events {
-  background-color: #04d9c452;
+  background-color: #08fde552;
 }
 
 .card:hover {
@@ -182,9 +189,30 @@ h4 {
   float: right;
 }
 
+#clearSearch {
+  color: #000;
+  text-shadow: none;
+  font-weight: bolder;
+  text-decoration: underline;
+  text-shadow:
+    1px 1px 2px #04D9C4,
+    1px -1px 2px #04D9C4,
+    -1px 1px 2px #04D9C4,
+    -1px -1px 2px #04D9C4;
+
+}
+
 .clear:hover {
   cursor: pointer;
 }
+
+/* scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
 
 
 /* ======================Modal============================= */
@@ -233,4 +261,13 @@ h4 {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
 }
