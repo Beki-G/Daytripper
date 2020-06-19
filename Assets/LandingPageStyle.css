@@ -27,9 +27,10 @@ h4,
 h5,
 h6,
 label {
-    color:black;
-    
+    color: black;
+
 }
+
 #title-center {
     text-align: right;
 }
@@ -49,7 +50,7 @@ label {
 
 .l-box-lrg {
     padding: 2em;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .is-center {
@@ -109,11 +110,13 @@ a.pure-button-primary {
 .home-menu {
     padding: 0.5em;
     text-align: center;
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
 }
+
 .home-menu {
-    background:white;
+    background: white;
 }
+
 .pure-menu.pure-menu-fixed {
     /* Fixed menus normally have a border at the bottom. */
     border-bottom: none;
@@ -123,20 +126,21 @@ a.pure-button-primary {
 
 .home-menu .pure-menu-heading {
     font-family: 'Satisfy', cursive;
-    text-transform : capitalize !important;
+    text-transform: capitalize !important;
     color: #F22797;
     text-shadow: 1px 1px #04D9C4;
     font-weight: 400;
-    font-size: 200%;
+    font-size: 300%;
 }
 
 .home-menu .pure-menu-selected a {
-    color:#F22797;
+    color: #F22797;
 }
 
 .home-menu a {
     color: black;
 }
+
 .home-menu li a:hover,
 .home-menu li a:focus {
     background: none;
@@ -156,7 +160,7 @@ a.pure-button-primary {
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
     width: 100%;
-    height: 88%;
+    height: 75%;
     top: 0;
     left: 0;
     position: fixed !important;
@@ -169,7 +173,10 @@ a.pure-button-primary {
     height: 50%;
     margin: auto;
     position: absolute;
-    top: 100px; left: 0; bottom: 0; right: 0;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
     text-align: center;
     text-transform: uppercase;
 }
@@ -179,9 +186,9 @@ a.pure-button-primary {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
-    color:#04D9C4;
+    color: #04D9C4;
     text-shadow: 1px 1px white;
-    border: 3px solid white;
+    border: 3px solid yellow;
     padding: 1em 1.6em;
     font-weight: 100;
     border-radius: 5px;
@@ -193,14 +200,14 @@ a.pure-button-primary {
     color: white;
     letter-spacing: 0.05em;
     opacity: 0.8;
-    
+
 }
 
 .sidebar-title-landing {
-        font-weight: bolder;
-        font-size: medium;
-        color: white !important;
-        text-shadow: 1px 1px #F22797;
+    font-weight: bolder;
+    font-size: medium;
+    color: white !important;
+    text-shadow: 1px 1px #F22797;
 }
 
 
@@ -244,22 +251,33 @@ a.pure-button-primary {
 }
 
 /* This is the class used for the content sub-headers (<h3>) */
-.content-subhead-rest{
-    
+.content-subhead-rest {
+
     color: black;
-    text-shadow: 1.5px 1.5px #f2cb055b;
+    text-shadow:
+    1px 1px 2px #f2cb055b,
+    1px -1px 2px #f2cb055b,
+    -1px 1px 2px #f2cb055b,
+    -1px -1px 2px #f2cb055b;
 }
+
 .content-subhead i {
     margin-right: 7px;
 }
 
 .content-subhead-events {
     color: black;
-    text-shadow: 1.5px 1.5px #04d9c452;
+    text-shadow:
+    1px 1px 2px #04d9c452,
+    1px -1px 2px #04d9c452,
+    -1px 1px 2px #04d9c452,
+    -1px -1px 2px #04d9c452;
 }
+
 #content-subhead-body {
     font-size: small;
 }
+
 .content-subhead i {
     margin-right: 7px;
 }
@@ -296,12 +314,13 @@ a.pure-button-primary {
     .home-menu {
         text-align: left;
     }
-        .home-menu ul {
-            float: right;
-        }
+
+    .home-menu ul {
+        float: right;
+    }
 
     /* We increase the height of the splash-container */
-/*    .splash-container {
+    /*    .splash-container {
         height: 500px;
     }*/
 
@@ -322,74 +341,75 @@ a.pure-button-primary {
         border: none;
     }
 
-/* Sidebar Styling imported from styl.css */
-.menu-title {
-    font-family: 'Satisfy', cursive;
-    color: black !important;
-    font-size: medium;
-    text-transform: capitalize !important;
-  
-  }
-  
-  #user-input {
-    align-content: flex-start;
-  }
-  
-  .sidebar-title {
-    font-weight: bolder;
-    font-size: medium;
-    color: black !important;
-    text-shadow: 1px 1px #F22797;
-  
-  }
-  
-  .sidebar-box {
-    margin-bottom: 20px !important;
-  }
-  
-  .sidebar-seperator {
-    box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
-    padding-bottom: 10px;
-  }
-  
-  label {
-    display: block;
-    width: 190px;
-  }
-  
-  input {
-    border: 1px solid #c4c4c4;
-    border-radius: 5px;
-    background-color: #fff;
-    padding: 3px 5px;
-    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
-    width: 190px;
-  }
-  
-  
-  /* DATE CHOOSER */
-  [type="date"] {
-    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
-  }
-  
-  [type="date"]::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  [type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-  }
+    /* Sidebar Styling imported from styl.css */
+    .menu-title {
+        font-family: 'Satisfy', cursive;
+        color: black !important;
+        font-size: medium;
+        text-transform: capitalize !important;
+
+    }
+
+    #user-input {
+        align-content: flex-start;
+    }
+
+    .sidebar-title {
+        font-weight: bolder;
+        font-size: medium;
+        color: black !important;
+        text-shadow: 1px 1px #F22797;
+
+    }
+
+    .sidebar-box {
+        margin-bottom: 20px !important;
+    }
+
+    .sidebar-seperator {
+        box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
+        padding-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        width: 190px;
+    }
+
+    input {
+        border: 1px solid #c4c4c4;
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 3px 5px;
+        box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+        width: 190px;
+    }
 
 
-/*
+    /* DATE CHOOSER */
+    [type="date"] {
+        background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+    }
+
+    [type="date"]::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    [type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+    }
+
+
+    /*
  * -- DESKTOP (AND UP) MEDIA QUERIES --
  * On desktops and other large devices, we want to over-ride some
  * of the mobile and tablet styles.
  */
-@media (min-width: 78em) {
-    /* We increase the header font size even more */
-    .splash-head {
-        font-size: 300%;
+    @media (min-width: 78em) {
+
+        /* We increase the header font size even more */
+        .splash-head {
+            font-size: 300%;
+        }
     }
-}
 }
