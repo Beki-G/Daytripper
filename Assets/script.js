@@ -263,7 +263,6 @@ function renderRestCard(restaurant){
   $(".container").append(restCard);
 }
 
-
 //------------------------ Event Cards (Get info and render)-------------------------------
 
 //get information from response object into formatted object
@@ -294,7 +293,6 @@ function getEventInfo(event){
 
   return eventInfoObj;
 }
-
 
 //with info passed in as an arg, render a card on the HTML
 function renderEventCard(eventInfoObj){
@@ -344,8 +342,14 @@ function setMinDate(){
 //----------------Event listeners----------------------
 
 //Listens for Use my Location and starts to get user coordinates
-$("#geoButton").click(function () {
+$(".geoButton").click(function (event) {
   event.preventDefault();
+
+  //if not on the results.html, go to it and append #useCoordinates to html
+  if(!(location.href).includes("results")){
+    location.href ="./Assets/results.html#useCoordinates";
+  }
+  
   useCurrentCoordinates();
   $("#cityInput").attr("disabled", " ");
   $("#dateOfTrip").attr("disabled", " ");
@@ -353,7 +357,7 @@ $("#geoButton").click(function () {
 });
 
 //Clear Search function resets the filters and results
-$("#clearSearch").click(function () {
+$("#clearSearch").click(function (event) {
   event.preventDefault();
   $("#cityInput").removeAttr("disabled");
   $("#dateOfTrip").removeAttr("disabled");
@@ -365,8 +369,23 @@ $("#clearSearch").click(function () {
 
 
 //User manual input and submit
-$("#submit").click(function () {
+$(".submit").click(function (event) {
   event.preventDefault();
+
+  //if not in the results.html, save user inputs into local storage to retieve later after page changes
+  if(!(location.href).includes("results")){
+    let cityTemp = $("#cityInput").val();
+    let dateTemp = $("#dateOfTrip").val();
+
+    if(dateTemp === undefined|| dateTemp === null){
+      dateTemp = new Date().toISOString().split('T')[0];
+    }
+
+    let userInput = {userCity: cityTemp, userDate:dateTemp};
+
+    localStorage.setItem("dateTripper", JSON.stringify(userInput));
+    location.href ="./Assets/results.html#userInput";
+  }
 
   let city = $("#cityInput").val();
   let date = $("#dateOfTrip").val();
@@ -375,9 +394,26 @@ $("#submit").click(function () {
 });
 
 //Closes modal element
-$(".close").click(function () {
+$(".close").click(function (event) {
   event.preventDefault();
   $("#myModal").attr("style", "display: none;");
 });
 
+//---------------When page loads ----------------
+//set the min date on the calendar to be current date
 setMinDate();
+
+//when the pages loads check if the url address includes #useCoordinates and if it does launch useCurrentCoordinate function
+if((location.href).includes("#useCoordinates")){
+  useCurrentCoordinates();
+}
+
+//when the page loads check if the url address includes #userInput and if it does retrieve from local storace and launce function to handle, and remove from local storage
+if((location.href).includes("#userInput")){
+  let jsonStr = localStorage.getItem("dateTripper");
+  let userInputs = JSON.parse(jsonStr);
+
+  userInputHandler(userInputs.userCity, userInputs.userDate);
+
+  localStorage.removeItem("dateTripper");
+}
