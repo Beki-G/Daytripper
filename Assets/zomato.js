@@ -1,11 +1,11 @@
+//Get location from device and disable user inputs
 $("#geoButton").click(function(){
     event.preventDefault();
-    console.log("I heard the button")
     useCurrentCoordinates();
     $("#cityInput").attr("disabled", " ");
     $("#dateOfTrip").attr("disabled", " ");
 })
-
+//click to clear output from previous search
 $("#clearSearch").click(function(){
   event.preventDefault();
   $( "#cityInput" ).removeAttr("disabled");
@@ -14,7 +14,7 @@ $("#clearSearch").click(function(){
   $('#dateOfTrip').val('');
   $(".container").empty();
 })
-
+//take date from input and fill variables
 $("#submit").click(function(){
   event.preventDefault();
 
@@ -39,7 +39,7 @@ function userInputHandler(city, date){
     "method": "GET",
     "timeout": 0,
     "headers": {
-      "user-key": "ee81083d2e8f964d3fc648ac92d54cae"
+    "user-key": "ee81083d2e8f964d3fc648ac92d54cae"
     }
   }
 
@@ -47,7 +47,8 @@ function userInputHandler(city, date){
     if (response.status === "success" && response.location_suggestions.length >=1){
       verifyUserCity(response.location_suggestions, date, city);
     }else {
-      alert("Cannot find your city. Please try to add the state abbrevatation.")
+      $(".modal").attr("style", "display: block;");
+      $("p.modal-text").text("Cannot find your city. Please try to add the state abbreviation.")
     }
   });
 
@@ -157,12 +158,12 @@ function useCurrentCoordinates(){
       "method": "GET",
       "timeout": 0,
       "headers": {
-        "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
+      "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
       }
     }
 
     let ticketMasterSettings={
-      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong="+latitude+","+longitude,
+      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong="+latitude+","+longitude+"&radius=20&unit=miles",
       "method": "GET",
       "timeout": 0      
     }
@@ -171,16 +172,17 @@ function useCurrentCoordinates(){
 
     ticketMasterCoordinateAPI(ticketMasterSettings);
   }
-
+  //Function for geolocation error-unable to find device
   function error(){
-    alert("Unable to retrieve your location")
+    $(".modal").attr("style", "display: block;");
+    $("p.modal-text").text("Unable to find your location. Please use City or Zip.")
   }
-
+  
   if(!navigator.geolocation){
-    alert("Cannot use location. Please use City or Zip")
-  }else{
+    $(".modal").attr("style", "display: block;");
+    }else{
     navigator.geolocation.getCurrentPosition(success,error)
-  }
+    }
 }
 
 function useCoordinatesRestaurantAPI(settings){
