@@ -12,7 +12,6 @@ body {
 
 /* main header styling */
 .header {
-
   padding-bottom: 60px;
 }
 
@@ -30,19 +29,23 @@ body {
   align-content: space-around; */
 }
 
-.main-title{
-    font-family: 'Satisfy', cursive;
-    color: #F22797 !important;
-    text-shadow: 1px 1px #04D9C4;
-    font-size: xx-large;
-    text-transform : capitalize !important;
-    text-align: center;
+.main-title {
+  font-family: 'Satisfy', cursive;
+  color: #F22797 !important;
+  text-shadow: 1px 1px #04D9C4;
+  font-size: 50px;
+  text-transform: capitalize !important;
+  text-align: center;
 }
 
 .col-title {
   font-family: 'Satisfy', ;
   color: black !important;
-  text-shadow: 1px 1px #04D9C4;
+  text-shadow:
+    1px 1px 2px #04D9C4,
+    1px -1px 2px #04D9C4,
+    -1px 1px 2px #04D9C4,
+    -1px -1px 2px #04D9C4;
   font-size: x-large;
   text-transform: capitalize !important;
   text-align: left;
@@ -65,9 +68,12 @@ body {
 .sidebar-title {
   font-weight: bolder;
   font-size: medium;
-  color: black !important;
-  text-shadow: 1px 1px #F22797;
-
+  color: white !important;
+  text-shadow:
+    1px 1px 2px #F22797,
+    1px -1px 2px #F22797,
+    -1px 1px 2px #F22797,
+    -1px -1px 2px #F22797;
 }
 
 .sidebar-box {
@@ -137,11 +143,11 @@ input {
 }
 
 .restaurant {
-  background-color: #f2cb055b;
+  background-color: #fdd4055b;
 }
 
 .events {
-  background-color: #04d9c452;
+  background-color: #08fde552;
 }
 
 .card:hover {
@@ -188,25 +194,26 @@ h4 {
   text-shadow: none;
   font-weight: bolder;
   text-decoration: underline;
-  
+  text-shadow:
+    1px 1px 2px #04D9C4,
+    1px -1px 2px #04D9C4,
+    -1px 1px 2px #04D9C4,
+    -1px -1px 2px #04D9C4;
+
 }
+
 .clear:hover {
   cursor: pointer;
 }
+
 /* scroll bar */
 
-  /* width */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  /* Track */
-  
-    ::-webkit-scrollbar-track {
-    background: 
-  }
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-  
+
 
 /* ======================Modal============================= */
 .modal {
@@ -261,6 +268,6 @@ h4 {
   left: 0;
   bottom: 0;
   width: 100%;
-  color:black;
+  color: black;
   text-align: center;
 }
