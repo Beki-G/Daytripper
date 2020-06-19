@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daytripper</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <div>
+        <div class="header">
+            <div class="pure-menu pure-menu-horizontal sidebar-seperator">
+                <a class="pure-menu-heading main-title" href="./results.html">Daytripper</a>
+            </div>
+
+        </div>
+        <!-- Column 1 - Sidebar -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Please select the correct city</p>
+                <div id="cities"></div>
+            </div>
+        </div>
+
+        <div class="pure-g">
+            <div class="pure-u-1-1 pure-u-md-1-5 l-box column-1">
+                <div class="col-title sidebar-seperator">Filters<span id="clearSearch" class="clear">Clear Search</span>
+                </div>
+                <form class="pure-form pure-form-stacked" id="user-input">
+                    <fieldset>
+                        <div class="pure-control-group sidebar-box">
+                            <label class="sidebar-title" for="stacked-name">City</label>
+                            <input class="input pure-input-rounded" id="cityInput" type="text"
+                                placeholder="City Name" />
+                        </div>
+                        <div class="pure-control-group sidebar-box">
+                            <label class="sidebar-title" for="date">Date</label>
+                            <input class="input pure-input-rounded" type="date" name="dateofbirth" id="dateOfTrip">
+                        </div>
+                        <div class="pure-controls sidebar-box sidebar-seperator">
+                            <label for="stacked-cb" class="pure-checkbox">
+                                <button id="submit" type="submit"
+                                    class="btn pure-button pure-button-primary">Submit</button>
+                        </div>
+
+                        <div class="pure-control-group sidebar-box">
+                            <label class="sidebar-title sidebar-box" for="date">Use My Location</label>
+                            <button id="geoButton" class="btn pure-button pure-button-primary">Use My Location</button>
+                            <form id="">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- Column 2 - Results -->
+            <div class="pure-u-1-1 pure-u-md-12-24 l-box column-2">
+                <div class="col-title sidebar-seperator">Results</div>
+                <div class="container center pure-menu pure-menu-scrollable custom-restricted">
+                </div>
+
+                <!--Populated cards will show up here-->
+
+            </div>
+            <!-- Column 3 - Empty -->
+            <!-- <div class="pure-u-1-1 pure-u-md-1-2 l-box">
+                <div class="">
+                
+                </div>
+            </div> -->
+
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+        <script src="./script.js"></script>
+        <script src="./zomato.js"></script>
+</body>
+
+</html>
