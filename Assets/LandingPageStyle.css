@@ -57,14 +57,6 @@ label {
     text-align: center;
 }
 
-#menu-spacing-food {
-    margin-right: 20px;
-}
-
-#menu-spacing-events {
-    margin-left: 20px;
-}
-
 /*
  * -- PURE FORM STYLES --
  * Style the form inputs and labels
@@ -148,7 +140,11 @@ a.pure-button-primary {
     color: #AECFE5;
 }
 
-
+.pure-menu-horizontal{
+    text-align: center;
+    padding-inline-start: 0;
+    white-space: normal !important;
+}
 /*
  * -- SPLASH STYLES --
  * This is the blue top section that appears on the page.
@@ -410,6 +406,13 @@ a.pure-button-primary {
         /* We increase the header font size even more */
         .splash-head {
             font-size: 300%;
+        }
+        #menu-spacing-food {
+            margin-right: 20px;
+        }
+        
+        #menu-spacing-events {
+            margin-left: 20px;
         }
     }
 }

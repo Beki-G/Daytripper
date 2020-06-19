@@ -406,6 +406,9 @@ setMinDate();
 //when the pages loads check if the url address includes #useCoordinates and if it does launch useCurrentCoordinate function
 if((location.href).includes("#useCoordinates")){
   useCurrentCoordinates();
+  $("#cityInput").attr("disabled", " ");
+  $("#dateOfTrip").attr("disabled", " ");
+  $("#submit").attr("disabled", " ");
 }
 
 //when the page loads check if the url address includes #userInput and if it does retrieve from local storace and launce function to handle, and remove from local storage
@@ -414,6 +417,10 @@ if((location.href).includes("#userInput")){
   let userInputs = JSON.parse(jsonStr);
 
   userInputHandler(userInputs.userCity, userInputs.userDate);
+
+  $("#cityInput").attr("disabled", " ");
+  $("#dateOfTrip").attr("disabled", " ");
+  $("#submit").attr("disabled", " ");
 
   localStorage.removeItem("dateTripper");
 }
