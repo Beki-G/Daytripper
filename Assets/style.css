@@ -2,7 +2,7 @@
 
 body {
   padding: 4em;
-  background: #e5e5e5;
+  background: white;
   font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
 
@@ -123,7 +123,7 @@ input {
 /* Card Styling and Formatting */
 .card {
 
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   /* margin-left: 30px; */
   /* margin-right: 5%; */
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
@@ -131,6 +131,7 @@ input {
   padding-top: 2%;
   padding-bottom: 2%;
   padding-right: 2%;
+  padding-left: 2%;
   transition: 0.3s;
 
 }
@@ -182,10 +183,30 @@ h4 {
   float: right;
 }
 
+#clearSearch {
+  color: #000;
+  text-shadow: none;
+  font-weight: bolder;
+  text-decoration: underline;
+  
+}
 .clear:hover {
   cursor: pointer;
 }
+/* scroll bar */
 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  
+    ::-webkit-scrollbar-track {
+    background: 
+  }
+
+  
 
 /* ======================Modal============================= */
 .modal {
