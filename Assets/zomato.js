@@ -1,45 +1,49 @@
+//Disables past dates in user input calendar
 var today = new Date().toISOString().split('T')[0];
 console.log(today)
 $("#dateOfTrip").attr("min", today)
 
-$("#geoButton").click(function(){
-    event.preventDefault();
-    console.log("I heard the button")
-    useCurrentCoordinates();
-    $("#cityInput").attr("disabled", " ");
-    $("#dateOfTrip").attr("disabled", " ");
+$("#geoButton").click(function () {
+  event.preventDefault();
+  console.log("I heard the button")
+  useCurrentCoordinates();
+  $("#cityInput").attr("disabled", " ");
+  $("#dateOfTrip").attr("disabled", " ");
+  $("#submit").attr("disabled", " ");
 })
 
-$("#clearSearch").click(function(){
+//Clear Search function resets the filters and results
+$("#clearSearch").click(function () {
   event.preventDefault();
-  $( "#cityInput" ).removeAttr("disabled");
-  $( "#dateOfTrip" ).removeAttr("disabled");
+  $("#cityInput").removeAttr("disabled");
+  $("#dateOfTrip").removeAttr("disabled");
+  $("#submit").removeAttr("disabled");
   $('#cityInput').val('');
   $('#dateOfTrip').val('');
   $(".container").empty();
 })
 
-$("#submit").click(function(){
+$("#submit").click(function () {
   event.preventDefault();
 
   let city = $("#cityInput").val();
   let date = $("#dateOfTrip").val();
-  
+
   userInputHandler(city, date);
 })
 
-$(".close").click(function(){
+$(".close").click(function () {
   event.preventDefault();
   $("#myModal").attr("style", "display: none;");
 })
 
 
-function userInputHandler(city, date){
+function userInputHandler(city, date) {
   //use zomato api to get list of possible city matches
-  console.log("in Handler "+ city+" "+date);
+  console.log("in Handler " + city + " " + date);
 
   var settings = {
-    "url": "https://developers.zomato.com/api/v2.1/cities?q="+city,
+    "url": "https://developers.zomato.com/api/v2.1/cities?q=" + city,
     "method": "GET",
     "timeout": 0,
     "headers": {
@@ -48,43 +52,51 @@ function userInputHandler(city, date){
   }
 
   $.ajax(settings).then(function (response) {
-    if (response.status === "success" && response.location_suggestions.length >=1){
+    if (response.status === "success" && response.location_suggestions.length >= 1) {
       verifyUserCity(response.location_suggestions, date, city);
-    }else {
+    } else {
       alert("Cannot find your city. Please try to add the state abbrevatation.")
     }
   });
 
 }
 
-function verifyUserCity(response, date, userInput){
+function verifyUserCity(response, date, userInput) {
   $("#cities").empty();
-  
+
   console.log(response)
 
-  if(response.length>1){
-    for(cityObj in response){
+  if (response.length > 1) {
+    for (cityObj in response) {
       let cityButton = $("<button></button>").attr("class", "btn pure-button pure-button-primary cityOptions");
       cityButton.text(response[cityObj].name);
       cityButton.attr("id", response[cityObj].id);
       //console.log(cityObj)
       cityButton.attr("data-state", response[cityObj].state_code)
-      
-      $("#cities").append(cityButton); 
+
+      $("#cities").append(cityButton);
       $("#myModal").attr("style", "display: block;");
     }
-  }else{
-    let cityInfoObj = {name:userInput, zomatoId: response[0].id, stateCode: response[0].state_code}
+  } else {
+    let cityInfoObj = {
+      name: userInput,
+      zomatoId: response[0].id,
+      stateCode: response[0].state_code
+    }
     console.log(cityInfoObj)
     useCitiesAPI(cityInfoObj, date)
   }
 
-  $(".cityOptions").click(event=>{
+  $(".cityOptions").click(event => {
     event.preventDefault();
     console.log("Listening");
     let cityId = event.target.id;
     let cityState = event.target.getAttribute("data-state")
-    let cityInfoObj = {name:userInput, zomatoId: cityId, state: cityState};
+    let cityInfoObj = {
+      name: userInput,
+      zomatoId: cityId,
+      state: cityState
+    };
 
     console.log(cityInfoObj);
     useCitiesAPI(cityInfoObj, date);
@@ -92,13 +104,13 @@ function verifyUserCity(response, date, userInput){
 
   })
 
- 
+
 }
 
-function useCitiesAPI(cityObj, date){
-//call zomato's api
+function useCitiesAPI(cityObj, date) {
+  //call zomato's api
   var zomatoSettings = {
-    "url": "https://developers.zomato.com/api/v2.1/location_details?entity_id="+cityObj.zomatoId+"&entity_type=city",
+    "url": "https://developers.zomato.com/api/v2.1/location_details?entity_id=" + cityObj.zomatoId + "&entity_type=city",
     "method": "GET",
     "timeout": 0,
     "headers": {
@@ -112,17 +124,17 @@ function useCitiesAPI(cityObj, date){
     console.log(response);
     let restaurants = response.best_rated_restaurant;
 
-    restaurants.forEach(restaurant =>{
+    restaurants.forEach(restaurant => {
       let restaurantArr = getRestaurantData(restaurant);
       renderRestCard(restaurantArr);
     })
   });
 
-//call ticketmasterAPI
+  //call ticketmasterAPI
   let d = new Date(date);
   console.log(date);
-  var ticketMasterSetting= {
-    "url": "https://app.ticketmaster.com/discovery/v2/events.json?city="+cityObj.name+"&stateCode="+cityObj.state+"&localStartDateTime"+date+"T00:01:00&apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM",
+  var ticketMasterSetting = {
+    "url": "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityObj.name + "&stateCode=" + cityObj.state + "&localStartDateTime" + date + "T00:01:00&apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM",
     "method": "GET",
     "timeout": 0,
 
@@ -133,28 +145,29 @@ function useCitiesAPI(cityObj, date){
     console.log("TickMasterResponse:");
     console.log(response)
 
-    if(response._embedded){
+    if (response._embedded) {
       let eventsArr = response._embedded.events;
-                       
+
       eventsArr.forEach(event => {
         let eventInfoArr = getEventInfo(event);
         renderEventCard(eventInfoArr);
       })
 
-    }else{
+    } else {
       console.log("no events")
     }
   });
 
 }
 
-function useCurrentCoordinates(){
+function useCurrentCoordinates() {
   console.log("I'm in useCurrentCoordinates")
-  function success(position){
+
+  function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    let queryURL = "https://developers.zomato.com/api/v2.1/geocode?lat="+latitude+"&lon="+longitude;
+    let queryURL = "https://developers.zomato.com/api/v2.1/geocode?lat=" + latitude + "&lon=" + longitude;
 
     let settings = {
       "url": queryURL,
@@ -165,10 +178,10 @@ function useCurrentCoordinates(){
       }
     }
 
-    let ticketMasterSettings={
-      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong="+latitude+","+longitude,
+    let ticketMasterSettings = {
+      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong=" + latitude + "," + longitude,
       "method": "GET",
-      "timeout": 0      
+      "timeout": 0
     }
 
     useCoordinatesRestaurantAPI(settings);
@@ -176,29 +189,28 @@ function useCurrentCoordinates(){
     ticketMasterCoordinateAPI(ticketMasterSettings);
   }
 
-  function error(){
+  function error() {
     alert("Unable to retrieve your location")
   }
 
-  if(!navigator.geolocation){
+  if (!navigator.geolocation) {
     alert("Cannot use location. Please use City or Zip")
-  }else{
-    navigator.geolocation.getCurrentPosition(success,error)
+  } else {
+    navigator.geolocation.getCurrentPosition(success, error)
   }
 }
 
-function useCoordinatesRestaurantAPI(settings){
+function useCoordinatesRestaurantAPI(settings) {
   $.ajax(settings).then(function (response) {
     $(".container").children(".restaurant").remove()
     let restuarants = response.nearby_restaurants
-    
+
     restuarants.forEach(restaurant => {
       let restaurantArr = getRestaurantData(restaurant);
       renderRestCard(restaurantArr);
     });
-  
-  });    
-}       
+  });
+}
 
 function getRestaurantData(restaurant){
   let rest = restaurant.restaurant;
@@ -207,14 +219,28 @@ function getRestaurantData(restaurant){
   let pRate = rest.price_range;
   let URL = rest.url;
   let photoURL = rest.thumb;
-  let uRate = rest.user_rating.aggregate_rating +" "+ rest.user_rating.rating_text
+  let uRate = rest.user_rating.aggregate_rating + " " + rest.user_rating.rating_text
   let menuURL = rest.menu_url
 
-  if(photoURL===""){
-    photoURL="https://via.placeholder.com/150/000000/FFFFFF?text=No+Image+Available"
+  if (photoURL === "") {
+    photoURL = "https://via.placeholder.com/150/000000/FFFFFF?text=No+Image+Available"
   }
 
-  let restArr = [{name: restName},{cuisineType: cuisine}, {priceRating:pRate}, {website: URL}, {imgURL: photoURL}, {userRate:uRate},{menu: menuURL}]
+  let restArr = [{
+    name: restName
+  }, {
+    cuisineType: cuisine
+  }, {
+    priceRating: pRate
+  }, {
+    website: URL
+  }, {
+    imgURL: photoURL
+  }, {
+    userRate: uRate
+  }, {
+    menu: menuURL
+  }]
 
   //console.log(restArr)
 
@@ -227,33 +253,33 @@ function renderRestCard(restaurant){
 
   let restCard = $("<div></div>").attr("class", "card restaurant")
   restCard.attr("id", restaurantName);
-  
+
   let restImgEl = $("<img>").attr("src", restaurant[4].imgURL);
   restImgEl.attr("class", "restImg")
 
-  let restH2El = $("<h2></h2>").attr("id", "restName-"+restaurantName);
+  let restH2El = $("<h2></h2>").attr("id", "restName-" + restaurantName);
   restH2El.text(restaurant[0].name);
 
-  let restH4El1 = $("<h4></h4>").attr("id", "cuisineType-" +restaurantName);
-  restH4El1.text("Cuisine(s): "+restaurant[1].cuisineType);
+  let restH4El1 = $("<h4></h4>").attr("id", "cuisineType-" + restaurantName);
+  restH4El1.text("Cuisine(s): " + restaurant[1].cuisineType);
 
-  let restH4El2 = $("<h4></h4>").attr("id", "starRating-"+restaurantName);
-  restH4El2.text("Rating: " +restaurant[5].userRate);
+  let restH4El2 = $("<h4></h4>").attr("id", "starRating-" + restaurantName);
+  restH4El2.text("Rating: " + restaurant[5].userRate);
 
-  let restH4El3 = $("<h4></h4>").attr("id", "priceRating-"+restaurantName);
+  let restH4El3 = $("<h4></h4>").attr("id", "priceRating-" + restaurantName);
   restH4El3.text("Price: ");
 
-  for(let i =0; i<restaurant[2].priceRating;i++){
+  for (let i = 0; i < restaurant[2].priceRating; i++) {
     let icon = $("<i></i>").attr("class", "fas fa-dollar-sign");
     restH4El3.append(icon)
   }
 
   let restPEl = $("<p></p>").attr("class", "textInfo");
-  restPEl.attr("id", "description-"+restaurantName);
+  restPEl.attr("id", "description-" + restaurantName);
 
   let restButtonEl = $("<button></button>").attr("class", "btn pure-button pure-button-primary cardContent");
-  restButtonEl.attr("id", "restBtn-"+restaurantName);
-  
+  restButtonEl.attr("id", "restBtn-" + restaurantName);
+
   let aEl = $("<a></a>").attr("href", restaurant[6].menu);
   aEl.text("More Info");
   aEl.attr("style", "color: white; text-decoration: none;")
