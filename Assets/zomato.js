@@ -47,15 +47,16 @@ function userInputHandler(city, date) {
     "method": "GET",
     "timeout": 0,
     "headers": {
-      "user-key": "ee81083d2e8f964d3fc648ac92d54cae"
+    "user-key": "ee81083d2e8f964d3fc648ac92d54cae"
     }
   }
 
   $.ajax(settings).then(function (response) {
     if (response.status === "success" && response.location_suggestions.length >= 1) {
       verifyUserCity(response.location_suggestions, date, city);
-    } else {
-      alert("Cannot find your city. Please try to add the state abbrevatation.")
+    }else {
+      $(".modal").attr("style", "display: block;");
+      $("p.modal-text").text("Cannot find your city. Please try to add the state abbreviation.")
     }
   });
 
@@ -174,12 +175,12 @@ function useCurrentCoordinates() {
       "method": "GET",
       "timeout": 0,
       "headers": {
-        "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
+      "user-key": "ee81083d2e8f964d3fc648ac92d54cae",
       }
     }
 
-    let ticketMasterSettings = {
-      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong=" + latitude + "," + longitude,
+    let ticketMasterSettings={
+      "url": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=DI18K276tAqWzecpJRpTmFuyJik79JOM&latlong="+latitude+","+longitude+"&radius=20&unit=miles",
       "method": "GET",
       "timeout": 0
     }
@@ -188,16 +189,17 @@ function useCurrentCoordinates() {
 
     ticketMasterCoordinateAPI(ticketMasterSettings);
   }
-
-  function error() {
-    alert("Unable to retrieve your location")
+  //Function for geolocation error-unable to find device
+  function error(){
+    $(".modal").attr("style", "display: block;");
+    $("p.modal-text").text("Unable to find your location. Please use City or Zip.")
   }
-
-  if (!navigator.geolocation) {
-    alert("Cannot use location. Please use City or Zip")
-  } else {
-    navigator.geolocation.getCurrentPosition(success, error)
-  }
+  
+  if(!navigator.geolocation){
+    $(".modal").attr("style", "display: block;");
+    }else{
+    navigator.geolocation.getCurrentPosition(success,error)
+    }
 }
 
 function useCoordinatesRestaurantAPI(settings) {
