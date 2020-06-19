@@ -112,7 +112,7 @@ a.pure-button-primary {
     box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
 }
 .home-menu {
-    background: #e5e5e5;
+    background:white;
 }
 .pure-menu.pure-menu-fixed {
     /* Fixed menus normally have a border at the bottom. */
@@ -181,7 +181,7 @@ a.pure-button-primary {
     font-weight: bold;
     color:#04D9C4;
     text-shadow: 1px 1px white;
-    border: 3px solid #e5e5e5;
+    border: 3px solid white;
     padding: 1em 1.6em;
     font-weight: 100;
     border-radius: 5px;
@@ -190,7 +190,7 @@ a.pure-button-primary {
 
 /* This is the subheading that appears on the blue section */
 .splash-subhead {
-    color: #e5e5e5;
+    color: white;
     letter-spacing: 0.05em;
     opacity: 0.8;
     
@@ -216,7 +216,7 @@ a.pure-button-primary {
     width: 100%;
     min-height: 12%;
     z-index: 2;
-    background: #e5e5e5;
+    background: white;
 
 }
 
@@ -322,7 +322,64 @@ a.pure-button-primary {
         border: none;
     }
 
-}
+/* Sidebar Styling imported from styl.css */
+.menu-title {
+    font-family: 'Satisfy', cursive;
+    color: black !important;
+    font-size: medium;
+    text-transform: capitalize !important;
+  
+  }
+  
+  #user-input {
+    align-content: flex-start;
+  }
+  
+  .sidebar-title {
+    font-weight: bolder;
+    font-size: medium;
+    color: black !important;
+    text-shadow: 1px 1px #F22797;
+  
+  }
+  
+  .sidebar-box {
+    margin-bottom: 20px !important;
+  }
+  
+  .sidebar-seperator {
+    box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
+    padding-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    width: 190px;
+  }
+  
+  input {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 190px;
+  }
+  
+  
+  /* DATE CHOOSER */
+  [type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+  }
+  
+  [type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+
 
 /*
  * -- DESKTOP (AND UP) MEDIA QUERIES --
