@@ -14,6 +14,12 @@ body {
     font-size: 13px;
 }
 
+.landing-button {
+    float: center;
+}
+
+
+
 h1,
 h2,
 h3,
@@ -23,6 +29,9 @@ h6,
 label {
     color:black;
     
+}
+#title-center {
+    text-align: right;
 }
 
 .pure-img-responsive {
@@ -47,7 +56,13 @@ label {
     text-align: center;
 }
 
+#menu-spacing-food {
+    margin-right: 20px;
+}
 
+#menu-spacing-events {
+    margin-left: 20px;
+}
 
 /*
  * -- PURE FORM STYLES --
@@ -164,9 +179,9 @@ a.pure-button-primary {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
-    color: #04D9C4;
-    text-shadow: 1px 1px #F22797;
-    border: 3px solid white;
+    color:#04D9C4;
+    text-shadow: 1px 1px white;
+    border: 3px solid #e5e5e5;
     padding: 1em 1.6em;
     font-weight: 100;
     border-radius: 5px;
@@ -175,11 +190,20 @@ a.pure-button-primary {
 
 /* This is the subheading that appears on the blue section */
 .splash-subhead {
-    color: white;
+    color: #e5e5e5;
     letter-spacing: 0.05em;
     opacity: 0.8;
     
 }
+
+.sidebar-title-landing {
+        font-weight: bolder;
+        font-size: medium;
+        color: white !important;
+        text-shadow: 1px 1px #F22797;
+}
+
+
 
 /*
  * -- CONTENT STYLES --
@@ -192,7 +216,7 @@ a.pure-button-primary {
     width: 100%;
     min-height: 12%;
     z-index: 2;
-    background: white;
+    background: #e5e5e5;
 
 }
 
@@ -221,20 +245,24 @@ a.pure-button-primary {
 
 /* This is the class used for the content sub-headers (<h3>) */
 .content-subhead-rest{
+    
     color: black;
     text-shadow: 1.5px 1.5px #f2cb055b;
 }
-    .content-subhead i {
-        margin-right: 7px;
-    }
+.content-subhead i {
+    margin-right: 7px;
+}
 
 .content-subhead-events {
     color: black;
     text-shadow: 1.5px 1.5px #04d9c452;
 }
-    .content-subhead i {
-        margin-right: 7px;
-    }
+#content-subhead-body {
+    font-size: small;
+}
+.content-subhead i {
+    margin-right: 7px;
+}
 
 /* This is the class used for the dark-background areas. */
 .ribbon {

@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./LandingPageStyle.css"/>
+    <link rel="stylesheet" href="./style.css"/>
+    
 </head>
 <body>
 
@@ -27,67 +30,72 @@
         <a class="pure-menu-heading" href="">Daytripper</a>
 
         <ul class="pure-menu-list">
-            <!-- <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li> -->
+            <li id="menu-spacing-food" class="pure-menu-item pure-menu-selected">
+                <h3 class="content-subhead-rest">
+                    Food
+                </h3>
+                
+                <p id="content-subhead-body">
+                    Quickly find nearby diners, restaraunts and food carts.
+                </p>
+                
+                <p class="small-label">Powered by<img src="./images/PikPng.com_badge-vector-png_5103582.png" alt="flowers" width="70px" height="auto"></p>
+            </li>
+            
+            <li id="menu-spacing-events" class="pure-menu-item pure-menu-selected">
+                <h3 class="content-subhead-events">
+                    Entertainment
+                </h3>
+                <p id="content-subhead-body">
+                    Quickly find nearby concerts, shows and other events happening today.
+                </p>
+                <p class="small-label">Powered by<img src="./images/ticketmaster-5.svg" alt="flowers" width="100px" height="auto"></p>
+            </li>
         </ul>
     </div>
 </div>
 
 <div class="splash-container">
     <div class="splash">
-        <h1 class="splash-head">Let's plan your day out!</h1>
+        <h1 class="splash-head">Let's make some plans!</h1>
         <p class="splash-subhead">
-            Use your location fto find restaurants and events near you!
+            A great place for traveler's and locals to quickly find where to eat and what to do
         </p>
-        <form class="pure-form pure-form-stacked" id="user-input">
-                <div class="pure-control-group sidebar-box">
-                    <input class="input pure-input-rounded" id="cityInput" type="text" placeholder="City Name" />
-                    
-                    <button id="submit" type="submit" class="btn pure-button pure-button-primary">Submit</button>
-                </div>
-                <br/>
-                <div class="pure-controls sidebar-box sidebar-seperator">
-                    
-                    <Label class="splash-subhead">Use my current location</Label>
-                    <button id="geoButton" class="btn pure-button pure-button-primary">Use My Location</button>
-                </div>
-                <!-- <div class="pure-control-group sidebar-box">
-                    
-                    
-                    <form id=""></form>
-                </div> -->
-            <!-- </fieldset> -->
-        </form>
+        
     
     </div>
 </div>
 
 <div class="content-wrapper">
     <div class="content">
-        <h2 class="content-head is-center">A great Place for Traveler's quickly find where to eat and what to do in a new city</h2>
-
+        <h2 class="content-head is-center">To get started, name the time and place!</h2>
         <div class="pure-g">
-            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                
-                <h3 class="content-subhead-events">
-                    Entertainment
-                </h3>
-                <p>
-                    Quickly find nearby concerts, shows and other events happening today.
-                </p>
-                <p class="small-label">Powered by<img src="./images/ticketmaster-5.svg" alt="flowers" width="100px" height="auto"></p> 
+            <div class="pure-u-1-3">
+               
             </div>
-            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                <h3 class="content-subhead-rest">
-                    
-                    Food
-                </h3>
-                <p>
-                    Quickly find nearby diners, restaraunts and food carts.
-                </p>
-                <p class="small-label">Powered by<img src="./images/PikPng.com_badge-vector-png_5103582.png" alt="flowers" width="100px" height="auto"></p>
-            </div>
+            <div class="pure-u-1-3"> 
+                 <div class="pure-control-group sidebar-box">
+                    <label class="sidebar-title" for="stacked-name">City</label>
+                    <input class="input pure-input-rounded" id="cityInput" type="text"
+                        placeholder="City Name" />
+                </div>
+                <div class="pure-control-group sidebar-box">
+                    <label class="sidebar-title" for="date">Date</label>
+                    <input class="input pure-input-rounded" type="date" name="dateofbirth" id="dateOfTrip">
+                </div>
+                <div class="pure-controls sidebar-box sidebar-seperator">
+                    <label for="stacked-cb" class="pure-checkbox">
+                        <button id="submit" type="submit"
+                            class="btn pure-button pure-button-primary">Submit</button>
+                </div>
+                <div class="pure-control-group sidebar-box">
+                    <label class="sidebar-title sidebar-box" for="date">Use My Location</label>
+                    <button id="geoButton" class="btn pure-button pure-button-primary">Use My Location</button>
+                    <form id="">
+                </div>
+            <div class="pure-u-1-3"></div>
         </div>
+       
     </div>
 </div>
 
@@ -95,6 +103,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
     <script src="./Assets/script.js"></script>
     <script src = "./Assets/zomato.js"></script>
 </body>
