@@ -310,7 +310,7 @@ function renderEventCard(eventInfoObj){
   
   let textDivEl = $("<div></div>").css("display", "inline-block");
 
-  eventImg.attr("alt", eventName +" Image");
+  eventImgEl.attr("alt", eventInfoObj.name +" Image");
 
   let h2El = $("<h2></h2>").text(eventInfoObj.name);
 
