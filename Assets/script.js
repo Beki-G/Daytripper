@@ -208,7 +208,7 @@ function getRestaurantData(restaurant){
     photoURL = "https://via.placeholder.com/150/000000/FFFFFF?text=No+Image+Available"
   }
 
-  let restArr = {name: restName, cuisineType: cuisine, riceRating: pRate, website: URL, imgURL: photoURL, userRate: uRate, menu: menuURL}
+  let restArr = {name: restName, cuisineType: cuisine, priceRating: pRate, website: URL, imgURL: photoURL, userRate: uRate, menu: menuURL}
 
   return restArr;
 }

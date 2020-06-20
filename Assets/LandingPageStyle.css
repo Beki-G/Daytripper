@@ -353,9 +353,12 @@ a.pure-button-primary {
     .sidebar-title {
         font-weight: bolder;
         font-size: medium;
-        color: black !important;
-        text-shadow: 1px 1px #F22797;
-
+        color: white !important;
+        text-shadow:
+            1px 1px 2px #F22797,
+            1px -1px 2px #F22797,
+            -1px 1px 2px #F22797,
+            -1px -1px 2px #F22797;
     }
 
     .sidebar-box {
