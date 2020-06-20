@@ -6,7 +6,7 @@ Daytripper is a dynamic site users can go to when they want to easily search for
 
 Check out our live page here: (https://beki-g.github.io/Project-01/)
 
-![Deployed Site](Landing Page.gif)
+![Deployed Site](./Assets/images/Landing_Page.gif)
 
 ## Built With:
 
