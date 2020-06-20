@@ -217,13 +217,13 @@ function getRestaurantData(restaurant){
 function renderRestCard(restaurant){
   let restaurantName = _.snakeCase(restaurant.name);
 
-  restImgEl.attr("alt", restaurantName +" Image");
-
   let restCard = $("<div></div>").attr("class", "card restaurant")
   restCard.attr("id", restaurantName);
 
   let restImgEl = $("<img>").attr("src", restaurant.imgURL);
-  restImgEl.attr("class", "restImg")
+  restImgEl.attr("class", "restImg");
+
+  restImgEl.attr("alt", restaurantName +" Image");
 
   let textDivEl = $("<div></div>").css("display", "inline-block");
 
@@ -309,6 +309,8 @@ function renderEventCard(eventInfoObj){
   eventImgEl.attr("src", eventInfoObj.imgSrc);
   
   let textDivEl = $("<div></div>").css("display", "inline-block");
+
+  eventImg.attr("alt", eventName +" Image");
 
   let h2El = $("<h2></h2>").text(eventInfoObj.name);
 
