@@ -166,7 +166,7 @@ function useCurrentCoordinates() {
 //calls the Zomato API using the coordinates from user
 function useCoordinatesRestaurantAPI(settings) {
   $.ajax(settings).then(function (response) {
-    //remova all restaurant cards from the container
+    //remove all restaurant cards from the container
     $(".container").children(".restaurant").remove()
     let restuarants = response.nearby_restaurants
 
@@ -216,6 +216,8 @@ function getRestaurantData(restaurant){
 //renders and appends Restaurant card to results.html
 function renderRestCard(restaurant){
   let restaurantName = _.snakeCase(restaurant.name);
+
+  restImgEl.attr("alt", restaurantName +" Image");
 
   let restCard = $("<div></div>").attr("class", "card restaurant")
   restCard.attr("id", restaurantName);
