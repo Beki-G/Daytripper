@@ -354,8 +354,11 @@ a.pure-button-primary {
         font-weight: bolder;
         font-size: medium;
         color: black !important;
-        text-shadow: 1px 1px #F22797;
-
+        text-shadow:
+            1px 1px 2px #F22797,
+            1px -1px 2px #F22797,
+            -1px 1px 2px #F22797,
+            -1px -1px 2px #F22797;
     }
 
     .sidebar-box {
