@@ -223,6 +223,8 @@ function renderRestCard(restaurant){
   let restImgEl = $("<img>").attr("src", restaurant.imgURL);
   restImgEl.attr("class", "restImg")
 
+  let textDivEl = $("<div></div>").css("display", "inline-block");
+
   let restH2El = $("<h2></h2>").attr("id", "restName-" + restaurantName);
   restH2El.text(restaurant.name);
 
@@ -253,12 +255,14 @@ function renderRestCard(restaurant){
   restButtonEl.append(aEl);
 
   restCard.append(restImgEl);
-  restCard.append(restH2El);
-  restCard.append(restH4El1);
-  restCard.append(restH4El2);
-  restCard.append(restH4El3);
-  restCard.append(restPEl);
-  restCard.append(restButtonEl);
+
+  textDivEl.append(restH2El);
+  textDivEl.append(restH4El1);
+  textDivEl.append(restH4El2);
+  textDivEl.append(restH4El3);
+  textDivEl.append(restPEl);
+  textDivEl.append(restButtonEl);
+  restCard.append(textDivEl)
 
   $(".container").append(restCard);
 }
@@ -301,6 +305,8 @@ function renderEventCard(eventInfoObj){
 
   let eventImgEl = $("<img>").attr("class","restImg")
   eventImgEl.attr("src", eventInfoObj.imgSrc);
+  
+  let textDivEl = $("<div></div>").css("display", "inline-block");
 
   let h2El = $("<h2></h2>").text(eventInfoObj.name);
 
@@ -321,12 +327,15 @@ function renderEventCard(eventInfoObj){
   buttonEl.append(aEl);
 
   eventCardEl.append(eventImgEl);
-  eventCardEl.append(h2El);
-  eventCardEl.append(h4El1);
-  eventCardEl.append(h4El2);
-  eventCardEl.append(h4El3);
-  eventCardEl.append(h4El4);
-  eventCardEl.append(buttonEl);
+  
+  textDivEl.append(h2El);
+  textDivEl.append(h4El1);
+  textDivEl.append(h4El2);
+  textDivEl.append(h4El3);
+  textDivEl.append(h4El4);
+  textDivEl.append(buttonEl);
+
+  eventCardEl.append(textDivEl);
 
   $(".container").append(eventCardEl)
 }
