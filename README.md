@@ -4,7 +4,7 @@ Daytripper is a dynamic site users can go to when they want to easily search for
 
 ## Deployment:
 
-Check out our live page here: (https://beki-g.github.io/Project-01/)
+Check out our live page here: https://beki-g.github.io/Daytripper/
 
 ![Deployed Site](./Assets/images/Landing_Page.gif)
 
