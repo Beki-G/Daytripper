@@ -360,7 +360,7 @@ $(".geoButton").click(function (event) {
 
   //if not on the results.html, go to it and append #useCoordinates to html
   if(!(location.href).includes("results")){
-    location.href ="./Assets/results.html#useCoordinates";
+    location.href ="./results.html#useCoordinates";
   }
   
   useCurrentCoordinates();
@@ -397,7 +397,7 @@ $(".submit").click(function (event) {
     let userInput = {userCity: cityTemp, userDate:dateTemp};
 
     localStorage.setItem("dateTripper", JSON.stringify(userInput));
-    location.href ="./Assets/results.html#userInput";
+    location.href ="./results.html#userInput";
   }
 
   let city = $("#cityInput").val();
